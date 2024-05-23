@@ -788,6 +788,163 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomeDeliveryHomeDelivery extends Schema.CollectionType {
+  collectionName: 'home_deliveries';
+  info: {
+    singularName: 'home-delivery';
+    pluralName: 'home-deliveries';
+    displayName: 'homeDelivery';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    state_requested: Attribute.Enumeration<
+      ['Recogiendo', 'En proceso', 'Entregado']
+    >;
+    request_date_and_time: Attribute.DateTime;
+    approximate_delivery_date: Attribute.DateTime;
+    total_price: Attribute.Decimal;
+    delivery_address: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-delivery.home-delivery',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-delivery.home-delivery',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPlanPackagePlanPackage extends Schema.CollectionType {
+  collectionName: 'plan_packages';
+  info: {
+    singularName: 'plan-package';
+    pluralName: 'plan-packages';
+    displayName: 'planPackage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Type: Attribute.Enumeration<['Basico', 'Estandar', 'Premium']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::plan-package.plan-package',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::plan-package.plan-package',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserClientUserClient extends Schema.CollectionType {
+  collectionName: 'user_clients';
+  info: {
+    singularName: 'user-client';
+    pluralName: 'user-clients';
+    displayName: 'UserClient';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    first_name: Attribute.String & Attribute.Required;
+    last_name: Attribute.String & Attribute.Required;
+    address_cliente: Attribute.String & Attribute.Required;
+    phone_number_client: Attribute.BigInteger;
+    email_client: Attribute.Email & Attribute.Required;
+    password_client: Attribute.Password & Attribute.Required;
+    department_client: Attribute.String;
+    municipality_or_capital_city: Attribute.String;
+    neighborhood_client: Attribute.String;
+    street_type_client: Attribute.String;
+    street_client: Attribute.String;
+    street_number_client: Attribute.String;
+    place_reference_client: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-client.user-client',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-client.user-client',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserCollaboratorUserCollaborator
+  extends Schema.CollectionType {
+  collectionName: 'user_collaborators';
+  info: {
+    singularName: 'user-collaborator';
+    pluralName: 'user-collaborators';
+    displayName: 'UserCollaborator';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name_collaborator: Attribute.String & Attribute.Required;
+    lastname_collaborator: Attribute.String & Attribute.Required;
+    address_collaborator: Attribute.String & Attribute.Required;
+    phone_number_collaborator: Attribute.BigInteger;
+    email_collaborator: Attribute.Email & Attribute.Required;
+    password_collaborator: Attribute.Password &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 6;
+      }>;
+    department_colla: Attribute.String;
+    municipality_or_capital_city_colla: Attribute.String;
+    neighborhood_colla: Attribute.String;
+    street_type_colla: Attribute.String;
+    street_colla: Attribute.String;
+    street_number_colla: Attribute.String;
+    place_reference_colla: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-collaborator.user-collaborator',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-collaborator.user-collaborator',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -806,6 +963,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::home-delivery.home-delivery': ApiHomeDeliveryHomeDelivery;
+      'api::plan-package.plan-package': ApiPlanPackagePlanPackage;
+      'api::user-client.user-client': ApiUserClientUserClient;
+      'api::user-collaborator.user-collaborator': ApiUserCollaboratorUserCollaborator;
     }
   }
 }

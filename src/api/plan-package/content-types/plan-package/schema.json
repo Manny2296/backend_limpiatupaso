@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "plan_packages",
+  "info": {
+    "singularName": "plan-package",
+    "pluralName": "plan-packages",
+    "displayName": "planPackage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Basico",
+        "Estandar",
+        "Premium"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_deliveries",
+  "info": {
+    "singularName": "home-delivery",
+    "pluralName": "home-deliveries",
+    "displayName": "homeDelivery"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "state_requested": {
+      "type": "enumeration",
+      "enum": [
+        "Recogiendo",
+        "En proceso",
+        "Entregado"
+      ]
+    },
+    "request_date_and_time": {
+      "type": "datetime"
+    },
+    "approximate_delivery_date": {
+      "type": "datetime"
+    },
+    "total_price": {
+      "type": "decimal"
+    },
+    "delivery_address": {
+      "type": "string"
+    }
+  }
+}
