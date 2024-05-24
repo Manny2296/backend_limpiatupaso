@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_collaborators",
+  "info": {
+    "singularName": "user-collaborator",
+    "pluralName": "user-collaborators",
+    "displayName": "UserCollaborator",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name_collaborator": {
+      "type": "string",
+      "required": true
+    },
+    "lastname_collaborator": {
+      "type": "string",
+      "required": true
+    },
+    "address_collaborator": {
+      "type": "string",
+      "required": true
+    },
+    "phone_number_collaborator": {
+      "type": "biginteger"
+    },
+    "email_collaborator": {
+      "type": "email",
+      "required": true
+    },
+    "password_collaborator": {
+      "type": "password",
+      "required": true,
+      "minLength": 6
+    },
+    "department_colla": {
+      "type": "string"
+    },
+    "municipality_or_capital_city_colla": {
+      "type": "string"
+    },
+    "neighborhood_colla": {
+      "type": "string"
+    },
+    "street_type_colla": {
+      "type": "string"
+    },
+    "street_colla": {
+      "type": "string"
+    },
+    "street_number_colla": {
+      "type": "string"
+    },
+    "place_reference_colla": {
+      "type": "string"
+    }
+  }
+}
